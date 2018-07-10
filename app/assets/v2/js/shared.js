@@ -816,6 +816,10 @@ var promptForAuth = function(event) {
   var denomination = $('#token option:selected').text();
   var tokenAddress = $('#token option:selected').val();
 
+  if (!denomination) {
+    return;
+  }
+
   if (denomination == 'ETH') {
     $('input, textarea, select').prop('disabled', '');
   } else {
