@@ -225,6 +225,9 @@ class BountyViewSet(viewsets.ModelViewSet):
                 interested__profile__handle__iexact=self.request.query_params.get('interested_github_username')
             )
 
+        if 'keyword' in param_keys:
+            queryset = queryset.keyword(self.request.query_params.get('keyword'))
+
         # order
         order_by = self.request.query_params.get('order_by')
         if order_by and order_by != 'null':
